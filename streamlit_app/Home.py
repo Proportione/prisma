@@ -104,5 +104,5 @@ st.divider()
 st.markdown(
     "**Research at Proportione** → "
     "[proportione.com/investigacion](https://proportione.com/investigacion) · "
-    "**Source** → [github.com/Proportione/PRISMA](https://github.com/Proportione/PRISMA)"
+    "**Source** → [github.com/Proportione/prisma](https://github.com/Proportione/prisma)"
 )

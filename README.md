@@ -2,6 +2,10 @@
 
 **A Python toolkit for systematic literature reviews — by [Proportione](https://proportione.com/investigacion).**
 
+[![CI](https://github.com/Proportione/prisma/actions/workflows/ci.yml/badge.svg)](https://github.com/Proportione/prisma/actions/workflows/ci.yml)
+[![Python](https://img.shields.io/badge/python-3.10%20%7C%203.11%20%7C%203.12-blue)](https://www.python.org/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+
 Covers the full pipeline of a transparent, reproducible SLR: corpus ingestion (OpenAlex), cross-source deduplication, two-tier title-abstract screening with traceable rule sets, full-text extraction with PyMuPDF, MMAT 2018 quality assessment, PRISMA 2020 flow diagrams, and bibliometric clustering with VOSviewer integration.
 
 Built and battle-tested while preparing the doctoral thesis of Javier Cuervo (Universidade de Aveiro, DEGEIT) and the journal articles co-authored with Rui Pedro Figueiredo Marques (ISCA-UA, GOVCOPP). Released as open-source so reviewers can audit the methodology and other researchers can reuse the pipeline.

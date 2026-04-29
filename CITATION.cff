@@ -12,7 +12,7 @@ authors:
     family-names: "Marques"
     email: "ruimarques@ua.pt"
     affiliation: "Universidade de Aveiro (ISCA-UA, GOVCOPP)"
-repository-code: "https://github.com/Proportione/PRISMA"
+repository-code: "https://github.com/Proportione/prisma"
 url: "https://proportione.com/investigacion"
 abstract: >
   PRISMA is a modular Python toolkit for systematic literature reviews,

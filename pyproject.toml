@@ -63,9 +63,9 @@ dev = [
 all = ["proportione-prisma[streamlit,dev]"]
 
 [project.urls]
-Homepage = "https://github.com/Proportione/PRISMA"
-Repository = "https://github.com/Proportione/PRISMA"
-Issues = "https://github.com/Proportione/PRISMA/issues"
+Homepage = "https://github.com/Proportione/prisma"
+Repository = "https://github.com/Proportione/prisma"
+Issues = "https://github.com/Proportione/prisma/issues"
 Research = "https://proportione.com/investigacion"
 
 [project.scripts]

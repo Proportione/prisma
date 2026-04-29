@@ -25,7 +25,7 @@ from prisma import __version__
 def main() -> None:
     """PRISMA — a research transparency toolkit by Proportione, LDA.
 
-    https://github.com/Proportione/PRISMA
+    https://github.com/Proportione/prisma
     """
 
 

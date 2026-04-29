@@ -6,8 +6,8 @@ rather merge a tight PR than a large one.
 ## Setup
 
 ```bash
-git clone https://github.com/Proportione/PRISMA.git
-cd PRISMA
+git clone https://github.com/Proportione/prisma.git
+cd prisma
 python -m venv .venv && source .venv/bin/activate
 pip install -e ".[dev,streamlit]"
 ```
