@@ -14,6 +14,7 @@ authors:
     affiliation: "Universidade de Aveiro (ISCA-UA, GOVCOPP)"
 repository-code: "https://github.com/Proportione/prisma"
 url: "https://proportione.com/investigacion"
+doi: "10.5281/zenodo.19883809"
 abstract: >
   PRISMA is a modular Python toolkit for systematic literature reviews,
   covering corpus ingestion (OpenAlex, RIS), cross-source deduplication,
