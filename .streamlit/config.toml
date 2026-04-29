@@ -1,0 +1,18 @@
+# Proportione brand theme
+# Brand manual: /Users/javiercuervolopez/code/CLAUDE.md
+# Principal: #5F322F (corporate brown-red)
+# Secondary palette: #551122, #3B431C, #6E8157, #566E30, #AEADB3
+
+[theme]
+primaryColor = "#5F322F"
+backgroundColor = "#FFFFFF"
+secondaryBackgroundColor = "#F5F1EE"
+textColor = "#1F1410"
+font = "sans serif"
+
+[server]
+headless = true
+runOnSave = true
+
+[browser]
+gatherUsageStats = false

@@ -1,0 +1,19 @@
+{
+  "identified_per_source": {
+    "Scopus": 375,
+    "OpenAlex": 316
+  },
+  "deduplicated": 462,
+  "duplicates_removed": 229,
+  "screened_title_abstract": 462,
+  "excluded_title_abstract": 169,
+  "sought_for_retrieval": 293,
+  "not_retrieved": 201,
+  "assessed_full_text": 92,
+  "excluded_full_text": {
+    "No business KPI": 12,
+    "Pure eWOM": 8,
+    "Secondary study": 5
+  },
+  "included": 67
+}

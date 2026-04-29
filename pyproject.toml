@@ -1,0 +1,96 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "proportione-prisma"
+version = "0.1.0"
+description = "A modular Python toolkit for systematic literature reviews: ingest, screening, full-text extraction, MMAT quality assessment, and bibliometric analysis. Compliant with PRISMA 2020 reporting."
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+authors = [
+    { name = "Javier Cuervo", email = "javier.cuervo@proportione.com" },
+    { name = "Rui Pedro Figueiredo Marques", email = "ruimarques@ua.pt" },
+]
+keywords = [
+    "systematic-literature-review",
+    "prisma",
+    "bibliometrics",
+    "meta-analysis",
+    "research-synthesis",
+    "mmat",
+    "vosviewer",
+    "openalex",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Information Analysis",
+    "Topic :: Text Processing :: Linguistic",
+]
+dependencies = [
+    "pandas>=2.0",
+    "numpy>=1.24",
+    "rapidfuzz>=3.0",
+    "requests>=2.31",
+    "pymupdf>=1.23",
+    "matplotlib>=3.7",
+    "seaborn>=0.13",
+    "networkx>=3.0",
+    "python-louvain>=0.16",
+    "click>=8.1",
+    "pyyaml>=6.0",
+]
+
+[project.optional-dependencies]
+streamlit = [
+    "streamlit>=1.30",
+    "plotly>=5.18",
+]
+dev = [
+    "pytest>=7.4",
+    "pytest-cov>=4.1",
+    "ruff>=0.3",
+    "mypy>=1.8",
+]
+all = ["proportione-prisma[streamlit,dev]"]
+
+[project.urls]
+Homepage = "https://github.com/Proportione/PRISMA"
+Repository = "https://github.com/Proportione/PRISMA"
+Issues = "https://github.com/Proportione/PRISMA/issues"
+Research = "https://proportione.com/investigacion"
+
+[project.scripts]
+prisma = "prisma.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/prisma"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+src = ["src"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP", "N", "SIM", "RUF"]
+ignore = ["E501"]  # line length handled by formatter
+
+[tool.ruff.lint.per-file-ignores]
+# NetworkX convention uses uppercase G for graphs
+"src/prisma/bibliometrics/cluster.py" = ["N803", "N806"]
+# En-dashes appear in academic citations and journal title ranges
+"src/prisma/quality/mmat.py" = ["RUF001", "RUF002"]
+"src/prisma/__init__.py" = ["RUF002"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+addopts = "-q --strict-markers"

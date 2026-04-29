@@ -1,0 +1,53 @@
+# Reference extraction taxonomy for "digital signal → business KPI" studies.
+# Companion to examples/screening_rules_signal_kpi.yaml.
+# Each pattern carries a label that becomes the extracted value.
+
+name: signal-kpi-extraction
+description: >
+  Extract data source, signal platform, KPI, methodology, and effect direction
+  from full-text PDFs.
+
+fields:
+  signal_platform:
+    description: Specific digital platform providing the signal
+    multi: true
+    patterns:
+      - { label: "Google Trends",   pattern: 'google\s*trends',   priority: 10 }
+      - { label: "Google Analytics",pattern: 'google\s*analytics',priority: 8 }
+      - { label: "TripAdvisor",     pattern: 'tripadvisor',       priority: 9 }
+      - { label: "Booking.com",     pattern: 'booking\.com',      priority: 9 }
+      - { label: "Twitter/X",       pattern: 'twitter|tweet',     priority: 7 }
+      - { label: "Wikipedia",       pattern: 'wikipedia',         priority: 6 }
+      - { label: "Baidu Index",     pattern: 'baidu\s*index',     priority: 8 }
+
+  kpi_metric:
+    description: KPI being predicted or modeled
+    multi: true
+    patterns:
+      - { label: "Sales / Revenue",  pattern: '\b(sales|revenue|turnover)\b' }
+      - { label: "Tourist demand",   pattern: '\b(tourist arrival|hotel occupancy|revpar|adr|visitor)\b' }
+      - { label: "Stock price",      pattern: '\b(stock price|stock return|stock market index)\b' }
+      - { label: "Unemployment",     pattern: '\b(unemploy|unemployment rate)\b' }
+      - { label: "GDP",              pattern: '\bgdp\b|gross domestic product' }
+      - { label: "Housing price",    pattern: '\b(housing price|house price|real estate price)\b' }
+      - { label: "Box office",       pattern: 'box\s*office' }
+
+  methodology:
+    description: Statistical or ML methodology used
+    multi: true
+    patterns:
+      - { label: "ARIMA family",  pattern: '\b(arima|sarima|arimax|arma)\b' }
+      - { label: "VAR / VECM",    pattern: '\b(var\b|vecm|vector autoregress)' }
+      - { label: "Regression",    pattern: '\b(ols|ordinary least squares|linear regression|panel regression)\b' }
+      - { label: "Random Forest", pattern: 'random\s*forest' }
+      - { label: "Neural Network",pattern: '\b(neural network|deep learning|lstm|transformer)\b' }
+      - { label: "MIDAS",         pattern: '\bmidas\b' }
+      - { label: "Granger",       pattern: 'granger' }
+
+  effect_direction:
+    description: Direction of the reported effect of the digital signal on the KPI
+    patterns:
+      - { label: "positive", pattern: '(positively|positive\s*(?:effect|impact|relation|correlation))' , priority: 5 }
+      - { label: "negative", pattern: '(negatively|negative\s*(?:effect|impact|relation|correlation))' , priority: 5 }
+      - { label: "mixed",    pattern: '\b(mixed\s*(?:results|evidence)|heterogeneous\s*effect)\b'      , priority: 6 }
+      - { label: "null",     pattern: '\b(no\s*(?:significant)?\s*(?:effect|relationship)|insignificant)\b', priority: 4 }

@@ -1,0 +1,70 @@
+# Reference screening rule set for "digital signals → business outcomes" SLRs.
+#
+# Encodes a simplified version of the protocol used in:
+#   Cuervo, J. & Marques, R.P.F. (2026). Where search data meets business
+#   intelligence: a bibliometric mapping of the Ibero-American research
+#   landscape. (Manuscript under review.)
+#
+# Adapt freely to other domains by editing the patterns below.
+
+name: signal-kpi
+description: >
+  Two-tier screening: hard exclusion (medical / non-business / pure eWOM /
+  secondary studies) followed by triple-positive inclusion (empirical method
+  AND digital signal AND business KPI).
+
+exclusion:
+  - id: R-MED-1
+    code: EC-MEDICAL
+    description: Medical / epidemiological topics
+    pattern: '\b(covid.?19|pandemic|influenza|dengue|malaria|zika|tuberculosis|hepatitis|hiv|aids|cancer|diabetes|asthma|hospital admission|epidemiolog)\b'
+    search_in: both
+
+  - id: R-EWOM-1
+    code: EC-EWOM
+    description: Pure review-quality / eWOM without business KPI
+    pattern: '\b(review helpfulness|review usefulness|fake review|review manipulation|e.?wom|electronic word.of.mouth)\b'
+    search_in: both
+
+  - id: R-SECONDARY-1
+    code: EC-SECONDARY
+    description: Systematic review / meta-analysis / bibliometric (secondary study)
+    pattern: '\b(systematic literature review|systematic review|meta.analysis|bibliometric analysis|scoping review|scientometric)\b'
+    search_in: title
+
+  - id: R-NONBIZ-1
+    code: EC-NONBUSINESS
+    description: Election / political / refugee / non-business outcome
+    pattern: '\b(election forecast|political party|voting behav|protest movement|refugee flow|migration pattern)\b'
+    search_in: both
+
+inclusion:
+  require_all_of: [empirical, digital_signal, business_kpi]
+
+  groups:
+    empirical:
+      description: Empirical study using real data + quantitative method
+      rules:
+        - id: I-EMP-1
+          code: IC-EMPIRICAL
+          description: Empirical or modeling vocabulary
+          pattern: '\b(empirical|dataset|panel data|time.series|regression|forecast|nowcast|predict|estimat|machine learning|neural network|random forest|granger|arima|midas|var\b|vecm|rmse|mape|r.squared)\b'
+          search_in: both
+
+    digital_signal:
+      description: Digital signal data source
+      rules:
+        - id: I-SIG-1
+          code: IC-DIGITAL-SIGNAL
+          description: Search / social / review / web traffic signal
+          pattern: '\b(google trends|search volume|search interest|web search|baidu index|naver trend|twitter data|tweet|tripadvisor|booking\.com|yelp|seo\b|web traffic|website visit|pageview|click.through|wikipedia.*(pageview|view)|app download|mobile search|google maps|google analytics|digital trace|digital footprint|online attention|search.based|query.based)\b'
+          search_in: both
+
+    business_kpi:
+      description: Business / economic outcome KPI
+      rules:
+        - id: I-KPI-1
+          code: IC-KPI
+          description: Sales, demand, prices, employment, financial markets
+          pattern: '\b(sales forecast|revenue|demand forecast|tourist arrival|hotel occupancy|stock price|stock market|stock return|exchange rate|gdp\b|unemployment|housing price|real estate|market share|brand awareness|purchase intention|conversion rate|retail sales|consumer spending|consumer confidence|inflation|cpi\b|box office|car sales|new car registration|electricity demand|commodity price|cryptocurrency|bitcoin|insurance claim|firm performance)\b'
+          search_in: both

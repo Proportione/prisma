@@ -1,0 +1,34 @@
+cff-version: 1.2.0
+title: "PRISMA: A Python Toolkit for Systematic Literature Reviews"
+message: "If you use this software in your research, please cite it as below."
+type: software
+authors:
+  - given-names: "Javier"
+    family-names: "Cuervo"
+    email: "javier.cuervo@proportione.com"
+    affiliation: "Universidade de Aveiro (DEGEIT, DBI) and Proportione, LDA"
+    orcid: "https://orcid.org/0000-0000-0000-0000"
+  - given-names: "Rui Pedro Figueiredo"
+    family-names: "Marques"
+    email: "ruimarques@ua.pt"
+    affiliation: "Universidade de Aveiro (ISCA-UA, GOVCOPP)"
+repository-code: "https://github.com/Proportione/PRISMA"
+url: "https://proportione.com/investigacion"
+abstract: >
+  PRISMA is a modular Python toolkit for systematic literature reviews,
+  covering corpus ingestion (OpenAlex, RIS), cross-source deduplication,
+  title-abstract screening, full-text extraction with PyMuPDF, MMAT 2018
+  quality assessment, PRISMA 2020 flow diagrams, and bibliometric analysis
+  (cluster detection, keyword co-occurrence, VOSviewer integration). It
+  ships a Streamlit demo and a CLI for reproducible reviews.
+keywords:
+  - systematic literature review
+  - PRISMA 2020
+  - MMAT 2018
+  - bibliometrics
+  - meta-analysis
+  - research synthesis
+  - reproducible research
+license: MIT
+version: 0.1.0
+date-released: "2026-04-29"
