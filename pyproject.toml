@@ -38,6 +38,7 @@ classifiers = [
 dependencies = [
     "pandas>=2.0",
     "numpy>=1.24",
+    "scipy>=1.10",
     "rapidfuzz>=3.0",
     "requests>=2.31",
     "pymupdf>=1.23",
@@ -54,13 +55,16 @@ streamlit = [
     "streamlit>=1.30",
     "plotly>=5.18",
 ]
+stats = [
+    "statsmodels>=0.14",
+]
 dev = [
     "pytest>=7.4",
     "pytest-cov>=4.1",
     "ruff>=0.3",
     "mypy>=1.8",
 ]
-all = ["proportione-prisma[streamlit,dev]"]
+all = ["proportione-prisma[streamlit,stats,dev]"]
 
 [project.urls]
 Homepage = "https://github.com/Proportione/prisma"
