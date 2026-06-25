@@ -206,6 +206,7 @@ def correlate(csv_path: str, x: str, y: str, group: str | None, covar: str | Non
     robustness check; optional partial correlation and bootstrap CI.
     """
     import pandas as pd
+
     from prisma.stats import bootstrap_ci, correlation_table, partial_correlation
 
     df = pd.read_csv(csv_path)

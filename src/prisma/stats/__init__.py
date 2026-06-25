@@ -7,19 +7,19 @@ partial correlation, bootstrap CIs for small cells, missingness/selection
 checks, and a clustered (mixed-effects) model with ICC.
 """
 from .correlations import (
-    fisher_ci,
-    correlation_table,
-    partial_correlation,
     bootstrap_ci,
+    correlation_table,
+    fisher_ci,
     missingness_compare,
     mixed_model_icc,
+    partial_correlation,
 )
 
 __all__ = [
-    "fisher_ci",
-    "correlation_table",
-    "partial_correlation",
     "bootstrap_ci",
+    "correlation_table",
+    "fisher_ci",
     "missingness_compare",
     "mixed_model_icc",
+    "partial_correlation",
 ]
