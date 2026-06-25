@@ -8,7 +8,7 @@ selection bias and clustering. Pure functions over pandas DataFrames.
 from __future__ import annotations
 
 import math
-from typing import Iterable, Sequence
+from collections.abc import Sequence
 
 import numpy as np
 import pandas as pd
@@ -67,7 +67,7 @@ def correlation_table(
 def partial_correlation(df: pd.DataFrame, x: str, y: str, covar: str) -> dict:
     """First-order partial correlation r(x, y | covar).
 
-    Answers 'does the x–y association survive controlling for a confounder
+    Answers 'does the x-y association survive controlling for a confounder
     such as general ability?'.
     """
     d = df[[x, y, covar]].apply(pd.to_numeric, errors="coerce").dropna()
