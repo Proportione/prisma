@@ -1,4 +1,6 @@
-"""Visualization config — Proportione brand palette."""
-from prisma.viz.config import PALETTE, apply_style
+"""Visualization helpers — Proportione brand palette and review-agnostic plots."""
+from prisma.viz.config import PALETTE, SEQUENCE, apply_style
+from prisma.viz.network import cooccurrence_network
+from prisma.viz.timeline import publication_growth
 
-__all__ = ["PALETTE", "apply_style"]
+__all__ = ["PALETTE", "SEQUENCE", "apply_style", "publication_growth", "cooccurrence_network"]
