@@ -86,7 +86,7 @@ streamlit run streamlit_app/Home.py
 
 If this toolkit informs your research, please cite the software (CITATION.cff) and, where applicable, the articles that introduced the rule sets and taxonomies bundled in `examples/`:
 
-> Cuervo, J. & Marques, R.P.F. (2026). *Where search data meets business intelligence: a bibliometric mapping of the Ibero-American research landscape.* (Manuscript under review.)
+> Cuervo, J. & Marques, R.P.F. (2026). *Where search data meets business intelligence: a bibliometric mapping of the Ibero-American research landscape.* (Accepted with minor revisions, CIDEMA 2025 / McGraw Hill; forthcoming.)
 
 ## Trademark / endorsement notice
 
