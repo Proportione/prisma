@@ -8,6 +8,7 @@ Subcommands
 - extract           Extract fields from PDFs using a YAML taxonomy.
 - quality           MMAT 2018 quality assessment from PDF text.
 - report            Render a PRISMA 2020 flow diagram from a JSON counts file.
+- correlate         Pearson (+Fisher-z CI) and Spearman correlations, overall/per stratum.
 """
 from __future__ import annotations
 
@@ -185,6 +186,41 @@ def report(counts: str, output: str, title: str, note: str) -> None:
     pc = PRISMACounts(**data)
     out_path = render_flow(pc, output, title=title, note=note)
     click.echo(f"Wrote {out_path}")
+
+
+@main.command()
+@click.option("--in", "csv_path", required=True, type=click.Path(exists=True, dir_okay=False),
+              help="CSV with one row per record.")
+@click.option("--x", required=True, help="First numeric column.")
+@click.option("--y", required=True, help="Second numeric column.")
+@click.option("--group", default=None, help="Optional column to stratify by.")
+@click.option("--partial", "covar", default=None, help="Optional covariate for a partial correlation r(x,y|covar).")
+@click.option("--bootstrap", is_flag=True, help="Add a percentile bootstrap CI (useful for small cells).")
+@click.option("--out", "output_csv", default=None, type=click.Path(dir_okay=False),
+              help="Optional CSV to write the correlation table to.")
+def correlate(csv_path: str, x: str, y: str, group: str | None, covar: str | None,
+              bootstrap: bool, output_csv: str | None) -> None:
+    """Pearson (+Fisher-z CI) and Spearman correlations, overall and per stratum.
+
+    Reviewer-proof by design: every estimate carries n, a 95% CI and a rank-based
+    robustness check; optional partial correlation and bootstrap CI.
+    """
+    import pandas as pd
+
+    from prisma.stats import bootstrap_ci, correlation_table, partial_correlation
+
+    df = pd.read_csv(csv_path)
+    table = correlation_table(df, x, y, group=group)
+    click.echo(table.to_string(index=False))
+    if output_csv:
+        out = Path(output_csv)
+        out.parent.mkdir(parents=True, exist_ok=True)
+        table.to_csv(out, index=False)
+        click.echo(f"Wrote {out}")
+    if covar:
+        click.echo(f"\nPartial r({x},{y}|{covar}): {partial_correlation(df, x, y, covar)}")
+    if bootstrap:
+        click.echo(f"Bootstrap CI: {bootstrap_ci(df, x, y)}")
 
 
 if __name__ == "__main__":
