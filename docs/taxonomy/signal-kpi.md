@@ -1,11 +1,7 @@
 # Signal-KPI taxonomy
 
 A reference taxonomy for SLRs studying how **digital signals** anticipate
-**business outcomes (KPIs)**. Used in:
-
-> Cuervo, J. & Marques, R.P.F. (2026). *Where search data meets business
-> intelligence: a bibliometric mapping of the Ibero-American research
-> landscape.* (Manuscript under review.)
+**business outcomes (KPIs)**.
 
 The taxonomy is shipped in two YAML files:
 
