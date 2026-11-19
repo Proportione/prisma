@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "proportione-prisma"
-version = "0.1.0"
+version = "0.2.0"
 description = "A modular Python toolkit for systematic literature reviews: ingest, screening, full-text extraction, MMAT quality assessment, and bibliometric analysis. Compliant with PRISMA 2020 reporting."
 readme = "README.md"
 requires-python = ">=3.10"

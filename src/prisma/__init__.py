@@ -8,7 +8,7 @@ Compliant with PRISMA 2020 (Page et al., BMJ 372:n71) and MMAT 2018
 or endorsed by the PRISMA Statement Group.
 """
 
-__version__ = "0.1.0"
+__version__ = "0.2.0"
 __all__ = [
     "bibliometrics",
     "extraction",
