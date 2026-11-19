@@ -1,0 +1,59 @@
+{
+  "upload_type": "software",
+  "title": "PRISMA: A Python Toolkit for Systematic Literature Reviews",
+  "creators": [
+    {
+      "name": "Cuervo, Javier",
+      "affiliation": "Universidade de Aveiro (DEGEIT, DBI) and Proportione, LDA",
+      "orcid": "0009-0006-7134-2894"
+    },
+    {
+      "name": "Marques, Rui Pedro Figueiredo",
+      "affiliation": "Universidade de Aveiro (ISCA-UA, GOVCOPP)",
+      "orcid": "0000-0001-8449-0526"
+    }
+  ],
+  "description": "<p>PRISMA is a modular Python toolkit for reproducible systematic literature reviews. It covers corpus ingestion (OpenAlex, RIS), cross-source deduplication, title-abstract screening with a YAML rule engine and audit log, full-text extraction with PyMuPDF, MMAT 2018 quality assessment, PRISMA 2020 flow diagrams, bibliometric analysis (Louvain clusters, keyword co-occurrence, VOSviewer integration) and correlation and robustness statistics (Fisher-z confidence intervals, partial correlation, bootstrap, missingness checks, mixed-model ICC). It ships a command-line interface and a Streamlit demo.</p><p>The toolkit is not affiliated with or endorsed by the PRISMA Statement Group or the EQUATOR Network.</p>",
+  "license": "MIT",
+  "language": "eng",
+  "access_right": "open",
+  "keywords": [
+    "systematic literature review",
+    "PRISMA 2020",
+    "MMAT 2018",
+    "bibliometrics",
+    "meta-analysis",
+    "research synthesis",
+    "reproducible research",
+    "OpenAlex",
+    "VOSviewer",
+    "correlation analysis",
+    "Python"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/Proportione/prisma",
+      "relation": "isSupplementTo",
+      "resource_type": "software",
+      "scheme": "url"
+    },
+    {
+      "identifier": "10.1136/bmj.n71",
+      "relation": "references",
+      "resource_type": "publication-article",
+      "scheme": "doi"
+    },
+    {
+      "identifier": "10.3233/EFI-180221",
+      "relation": "references",
+      "resource_type": "publication-article",
+      "scheme": "doi"
+    },
+    {
+      "identifier": "10.1016/j.jbusres.2021.04.070",
+      "relation": "references",
+      "resource_type": "publication-article",
+      "scheme": "doi"
+    }
+  ]
+}

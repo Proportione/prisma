@@ -12,6 +12,7 @@ authors:
     family-names: "Marques"
     email: "ruimarques@ua.pt"
     affiliation: "Universidade de Aveiro (ISCA-UA, GOVCOPP)"
+    orcid: "https://orcid.org/0000-0001-8449-0526"
 repository-code: "https://github.com/Proportione/prisma"
 url: "https://proportione.com/investigacion"
 doi: "10.5281/zenodo.19883809"
@@ -30,6 +31,9 @@ keywords:
   - meta-analysis
   - research synthesis
   - reproducible research
+  - OpenAlex
+  - VOSviewer
+  - correlation analysis
 license: MIT
-version: 0.1.0
-date-released: "2026-04-29"
+version: 0.2.0
+date-released: "2026-11-19"
