@@ -73,6 +73,7 @@ streamlit run streamlit_app/Home.py
 | `prisma.quality` | MMAT 2018 quantitative-descriptive heuristic scoring (Q1–Q5, High/Medium/Low) | Pub3 |
 | `prisma.reporting` | PRISMA 2020 flow diagram from `PRISMACounts` dataclass | Pub3 |
 | `prisma.bibliometrics` | VOSviewer `.net` loader · Louvain communities (modularity, density, centrality) · co-occurrence matrix | Pub1-Fusion |
+| `prisma.stats` | Correlation tables with Fisher-z CIs · partial correlation · bootstrap CIs · missingness comparison · mixed-model ICC (`prisma correlate`) | 20-60-20 study |
 | `prisma.viz` | Matplotlib config with the Proportione brand palette | shared |
 
 ## Methodology references
