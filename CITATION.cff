@@ -15,7 +15,7 @@ authors:
     orcid: "https://orcid.org/0000-0001-8449-0526"
 repository-code: "https://github.com/Proportione/prisma"
 url: "https://proportione.com/investigacion"
-doi: "10.5281/zenodo.19883809"
+doi: "10.5281/zenodo.19883808"
 abstract: >
   PRISMA is a modular Python toolkit for systematic literature reviews,
   covering corpus ingestion (OpenAlex, RIS), cross-source deduplication,
