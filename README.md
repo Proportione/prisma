@@ -9,6 +9,8 @@
 
 Covers the full pipeline of a transparent, reproducible SLR: corpus ingestion (OpenAlex), cross-source deduplication, two-tier title-abstract screening with traceable rule sets, full-text extraction with PyMuPDF, MMAT 2018 quality assessment, PRISMA 2020 flow diagrams, and bibliometric clustering with VOSviewer integration.
 
+**¿Hablas español?** Hay una [guía paso a paso para empezar](docs/guia-para-empezar.md), pensada para quien hace su primera revisión sistemática y no programa a diario.
+
 Built and battle-tested while preparing the doctoral thesis of Javier Cuervo (Universidade de Aveiro, DEGEIT) and the journal articles co-authored with Rui Pedro Figueiredo Marques (ISCA-UA, GOVCOPP). Released as open-source so reviewers can audit the methodology and other researchers can reuse the pipeline.
 
 ## Why this exists
@@ -18,9 +20,14 @@ Most SLR tooling solves *one* step (e.g. screening, or visualisation, or dedupli
 ## Install
 
 ```bash
-pip install proportione-prisma            # CLI + library
-pip install "proportione-prisma[streamlit]"  # + Streamlit demo
+# CLI + library
+pip install "git+https://github.com/Proportione/prisma@v0.2.0"
+
+# + Streamlit demo
+pip install "proportione-prisma[streamlit] @ git+https://github.com/Proportione/prisma@v0.2.0"
 ```
+
+The package is not on PyPI yet, so `pip install proportione-prisma` on its own will not find it. Install from the tagged release as shown above.
 
 Python 3.10+. PyMuPDF, pandas, networkx, rapidfuzz, click, pyyaml, plus matplotlib/seaborn for plots.
 
@@ -76,6 +83,26 @@ streamlit run streamlit_app/Home.py
 | `prisma.stats` | Correlation tables with Fisher-z CIs · partial correlation · bootstrap CIs · missingness comparison · mixed-model ICC (`prisma correlate`) | 20-60-20 study |
 | `prisma.viz` | Matplotlib config with the Proportione brand palette | shared |
 
+## What a reviewer or supervisor will ask
+
+**Which version and DOI do I cite?** Cite the version you ran (`prisma --version`). Each release has its own DOI on Zenodo; v0.2.0 is [10.5281/zenodo.24377800](https://doi.org/10.5281/zenodo.24377800). The general DOI [10.5281/zenodo.19883808](https://doi.org/10.5281/zenodo.19883808) always resolves to the latest release and is the one to use when you refer to the toolkit as a whole.
+
+**Can I reproduce a flow diagram from its inputs?** Yes. The diagram is drawn from a small JSON file of counts and nothing else. The repository ships a synthetic example:
+
+```bash
+prisma report --counts examples/prisma_counts_demo.json --out reports/prisma-flow.png
+```
+
+The same file and the same version give the same figure. Publish the counts file alongside the figure.
+
+**How are duplicates handled, and where in the flow?** Before screening. `prisma ingest dedup` compares records across sources, first by normalised DOI and then by title similarity (rapidfuzz ratio, 92 by default, adjustable with `--threshold`). The first occurrence is kept. The run writes `corpus-dedup-report.md` with the totals and, for the first 50 removed records, the reason and the source of the record each one duplicates, so the decisions can be spot-checked by hand.
+
+**What does it cover of PRISMA 2020, and what not?** It produces the flow diagram for records identified through databases and registers: identification, screening, eligibility, included, with reasons for exclusion at full text. It does not draw the "other methods" branch of the official template, does not fill in the PRISMA 2020 checklist or the PRISMA-S search checklist, and does not register a protocol. Those remain the authors' work.
+
+**Does it replace the reviewers' judgement?** No. Screening applies the rules you write in YAML and logs which rule fired for each record (`screening-decisions.csv`, `screening-audit-log.csv`); borderline records are marked `maybe` for a person to decide. MMAT scores are heuristic and flagged for human review. Dual screening and the resolution of disagreements happen outside the toolkit.
+
+**Licence?** MIT. See [How to cite](#how-to-cite) for the reference.
+
 ## Methodology references
 
 - **PRISMA 2020** — Page, M.J. et al. (2021). *BMJ* 372:n71. https://doi.org/10.1136/bmj.n71
@@ -85,7 +112,11 @@ streamlit run streamlit_app/Home.py
 
 ## How to cite
 
-If this toolkit informs your research, please cite the software (CITATION.cff) and, where applicable, the articles that introduced the rule sets and taxonomies bundled in `examples/`:
+If this toolkit informs your research, please cite the software:
+
+> Cuervo, J. & Marques, R.P.F. (2026). *PRISMA: A Python Toolkit for Systematic Literature Reviews* (version 0.2.0) [Software]. Zenodo. https://doi.org/10.5281/zenodo.19883808
+
+The same reference is in [CITATION.cff](CITATION.cff), which GitHub turns into BibTeX or APA from the "Cite this repository" button. Where applicable, cite also the articles that introduced the rule sets and taxonomies bundled in `examples/`:
 
 > Cuervo, J. & Marques, R.P.F. (2026). *Where search data meets business intelligence: a bibliometric mapping of the Ibero-American research landscape.* (Accepted with minor revisions, CIDEMA 2025 / McGraw Hill; forthcoming.)
 
@@ -103,4 +134,6 @@ MIT — see [LICENSE](LICENSE). Copyright © 2026 Proportione, LDA.
 
 ## About Proportione
 
-[Proportione](https://proportione.com) is an independent research and engineering firm working on data-driven decision systems and BI. Our research output lives at [proportione.com/investigacion](https://proportione.com/investigacion).
+[Proportione](https://proportione.com/?utm_source=github&utm_medium=readme&utm_campaign=prisma) is an independent research and engineering firm working on data-driven decision systems and BI. Our research output, including the studies this toolkit was built for, lives at [proportione.com/investigacion](https://proportione.com/investigacion/?utm_source=github&utm_medium=readme&utm_campaign=prisma).
+
+If your organisation needs an evidence review that others can audit and repeat, [write to us](https://proportione.com/contacto/?utm_source=github&utm_medium=readme&utm_campaign=prisma).
