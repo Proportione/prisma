@@ -4,6 +4,10 @@ All notable changes to `proportione-prisma` are documented here. Format follows 
 
 ## [Unreleased]
 
+### Fixed
+
+- PRISMA flow diagram: the arrow to "Duplicates removed" now leaves the "Records identified" box instead of pointing back at it.
+
 ## [0.2.0] — 2026-11-19
 
 ### Added

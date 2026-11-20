@@ -93,7 +93,7 @@ def render_flow(
     if counts.duplicates_removed:
         ax.text(10, 13.0, f"Duplicates removed\n(n = {counts.duplicates_removed})",
                 ha="center", fontsize=9, bbox=box_excl)
-        arrow(8.7, 13.0, 7.6, 13.0)
+        arrow(7.6, 13.0, 8.7, 13.0)
 
     if counts.deduplicated is not None:
         ax.text(6, 11.3, f"Records after deduplication\n(n = {counts.deduplicated})",
