@@ -9,6 +9,8 @@
 
 Covers the full pipeline of a transparent, reproducible SLR: corpus ingestion (OpenAlex), cross-source deduplication, two-tier title-abstract screening with traceable rule sets, full-text extraction with PyMuPDF, MMAT 2018 quality assessment, PRISMA 2020 flow diagrams, and bibliometric clustering with VOSviewer integration.
 
+**¿Hablas español?** Hay una [guía paso a paso para empezar](docs/guia-para-empezar.md), pensada para quien hace su primera revisión sistemática y no programa a diario.
+
 Built and battle-tested while preparing the doctoral thesis of Javier Cuervo (Universidade de Aveiro, DEGEIT) and the journal articles co-authored with Rui Pedro Figueiredo Marques (ISCA-UA, GOVCOPP). Released as open-source so reviewers can audit the methodology and other researchers can reuse the pipeline.
 
 ## Why this exists
@@ -18,9 +20,14 @@ Most SLR tooling solves *one* step (e.g. screening, or visualisation, or dedupli
 ## Install
 
 ```bash
-pip install proportione-prisma            # CLI + library
-pip install "proportione-prisma[streamlit]"  # + Streamlit demo
+# CLI + library
+pip install "git+https://github.com/Proportione/prisma@v0.2.0"
+
+# + Streamlit demo
+pip install "proportione-prisma[streamlit] @ git+https://github.com/Proportione/prisma@v0.2.0"
 ```
+
+The package is not on PyPI yet, so `pip install proportione-prisma` on its own will not find it. Install from the tagged release as shown above.
 
 Python 3.10+. PyMuPDF, pandas, networkx, rapidfuzz, click, pyyaml, plus matplotlib/seaborn for plots.
 
@@ -103,4 +110,6 @@ MIT — see [LICENSE](LICENSE). Copyright © 2026 Proportione, LDA.
 
 ## About Proportione
 
-[Proportione](https://proportione.com) is an independent research and engineering firm working on data-driven decision systems and BI. Our research output lives at [proportione.com/investigacion](https://proportione.com/investigacion).
+[Proportione](https://proportione.com/?utm_source=github&utm_medium=readme&utm_campaign=prisma) is an independent research and engineering firm working on data-driven decision systems and BI. Our research output, including the studies this toolkit was built for, lives at [proportione.com/investigacion](https://proportione.com/investigacion/?utm_source=github&utm_medium=readme&utm_campaign=prisma).
+
+If your organisation needs an evidence review that others can audit and repeat, [write to us](https://proportione.com/contacto/?utm_source=github&utm_medium=readme&utm_campaign=prisma).
