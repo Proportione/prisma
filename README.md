@@ -95,6 +95,8 @@ prisma report --counts examples/prisma_counts_demo.json --out reports/prisma-flo
 
 The same file and the same version give the same figure. Publish the counts file alongside the figure.
 
+<p align="center"><img src="docs/img/prisma-flow-demo.png" alt="PRISMA 2020 flow diagram drawn from the synthetic example counts" width="520"></p>
+
 **How are duplicates handled, and where in the flow?** Before screening. `prisma ingest dedup` compares records across sources, first by normalised DOI and then by title similarity (rapidfuzz ratio, 92 by default, adjustable with `--threshold`). The first occurrence is kept. The run writes `corpus-dedup-report.md` with the totals and, for the first 50 removed records, the reason and the source of the record each one duplicates, so the decisions can be spot-checked by hand.
 
 **What does it cover of PRISMA 2020, and what not?** It produces the flow diagram for records identified through databases and registers: identification, screening, eligibility, included, with reasons for exclusion at full text. It does not draw the "other methods" branch of the official template, does not fill in the PRISMA 2020 checklist or the PRISMA-S search checklist, and does not register a protocol. Those remain the authors' work.
