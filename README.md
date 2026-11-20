@@ -9,7 +9,7 @@
 
 Covers the full pipeline of a transparent, reproducible SLR: corpus ingestion (OpenAlex), cross-source deduplication, two-tier title-abstract screening with traceable rule sets, full-text extraction with PyMuPDF, MMAT 2018 quality assessment, PRISMA 2020 flow diagrams, and bibliometric clustering with VOSviewer integration.
 
-**¿Hablas español?** Hay una [guía paso a paso para empezar](docs/guia-para-empezar.md), pensada para quien hace su primera revisión sistemática y no programa a diario.
+**¿Hablas español?** Hay una [guía paso a paso para empezar](docs/guia-para-empezar.md), pensada para quien hace su primera revisión sistemática y no programa a diario. La misma guía, con el diagrama de ejemplo, está [en la web de Proportione](https://proportione.com/revision-sistematica-prisma-guia/?utm_source=github&utm_medium=readme&utm_campaign=prisma).
 
 Built and battle-tested while preparing the doctoral thesis of Javier Cuervo (Universidade de Aveiro, DEGEIT) and the journal articles co-authored with Rui Pedro Figueiredo Marques (ISCA-UA, GOVCOPP). Released as open-source so reviewers can audit the methodology and other researchers can reuse the pipeline.
 
