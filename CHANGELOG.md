@@ -4,10 +4,14 @@ All notable changes to `proportione-prisma` are documented here. Format follows 
 
 ## [Unreleased]
 
+### Changed
+
+- `prisma extract` and `prisma quality`: the rows of the output CSV now follow the sorted order of the PDF paths; before, they followed the order the filesystem returned. PDFs whose name starts with a dot, or that sit inside a folder whose name starts with a dot, are no longer processed.
+
 ### Fixed
 
 - PRISMA flow diagram: the arrow to "Duplicates removed" now leaves the "Records identified" box instead of pointing back at it.
-- `iter_pdfs` no longer returns hidden files or the `._name.pdf` companions that macOS archives add (also under `__MACOSX/`). They made a folder of 122 PDFs count as 245. Paths now come in sorted order.
+- `iter_pdfs` no longer returns the `._name.pdf` companions that macOS archives add (also under `__MACOSX/`). They roughly doubled the file count of a folder and are not readable as PDFs.
 
 ## [0.2.0] — 2026-11-19
 
