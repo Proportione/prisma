@@ -71,5 +71,13 @@ def extract_section(pages: list[PageText], section: str) -> str:
 
 
 def iter_pdfs(directory: str | Path) -> Iterator[Path]:
-    """Yield all PDF paths under `directory`."""
-    yield from Path(directory).rglob("*.pdf")
+    """Yield the PDF paths under `directory`, in sorted order.
+
+    Hidden files are skipped, and so is the `__MACOSX` folder: macOS archives add
+    a `._name.pdf` companion to every file, which has the extension but is not a PDF.
+    """
+    root = Path(directory)
+    for path in sorted(root.rglob("*.pdf")):
+        if path.name.startswith(".") or "__MACOSX" in path.relative_to(root).parts:
+            continue
+        yield path

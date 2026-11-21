@@ -7,6 +7,7 @@ All notable changes to `proportione-prisma` are documented here. Format follows 
 ### Fixed
 
 - PRISMA flow diagram: the arrow to "Duplicates removed" now leaves the "Records identified" box instead of pointing back at it.
+- `iter_pdfs` no longer returns hidden files or the `._name.pdf` companions that macOS archives add (also under `__MACOSX/`). They made a folder of 122 PDFs count as 245. Paths now come in sorted order.
 
 ## [0.2.0] — 2026-11-19
 
