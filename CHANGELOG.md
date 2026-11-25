@@ -10,6 +10,7 @@ All notable changes to `proportione-prisma` are documented here. Format follows 
 
 ### Fixed
 
+- `deduplicate` no longer removes a record on title similarity when both records carry a DOI and the DOIs differ. Two parts of a series ("part 1", "part 2", ratio 98) or an article and a comment on it were merged, and the second paper never reached screening. Such pairs are now kept and listed in `DedupResult.possible_versions` and in a new section of the dedup report, to be resolved by hand. A title match where one record has no DOI is still a duplicate.
 - PRISMA flow diagram: the arrow to "Duplicates removed" now leaves the "Records identified" box instead of pointing back at it.
 - `iter_pdfs` no longer returns the `._name.pdf` companions that macOS archives add (also under `__MACOSX/`). They roughly doubled the file count of a folder and are not readable as PDFs.
 
