@@ -60,3 +60,39 @@ def test_record_to_ris_round_trip(tmp_path):
     serialized = record_to_ris(records[0])
     assert "TI  - Forecasting demand with Google Trends" in serialized
     assert "ER  - " in serialized
+
+
+def test_parse_ris_strips_utf8_bom(tmp_path):
+    p = tmp_path / "scopus_bom.ris"
+    p.write_text(SAMPLE_RIS, encoding="utf-8-sig")
+    records = parse_ris(p)
+    assert len(records) == 2
+    assert get_field(records[0], "TY") == "JOUR"
+    assert get_field(records[0], "TI") == "Forecasting demand with Google Trends"
+
+
+def test_parse_ris_preserves_multiline_fields_and_closes_on_er(tmp_path):
+    ris = (
+        "TY  - JOUR\n"
+        "TI  - Forecasting retail demand\n"
+        "  with Google Trends\n"
+        "AB  - Background: We study retail demand.\n"
+        "Methods: We fit a time-series model.\n"
+        "Results: Error drops by 15%.\n"
+        "ER  -\n"
+        "Stray line between records\n"
+        "TY  - JOUR\n"
+        "TI  - Second paper\n"
+        "ER  - \n"
+    )
+    p = tmp_path / "multiline.ris"
+    p.write_text(ris, encoding="utf-8")
+    records = parse_ris(p)
+    assert len(records) == 2
+    assert get_field(records[0], "TI") == "Forecasting retail demand with Google Trends"
+    assert get_field(records[0], "AB") == (
+        "Background: We study retail demand. "
+        "Methods: We fit a time-series model. "
+        "Results: Error drops by 15%."
+    )
+    assert get_field(records[1], "TI") == "Second paper"

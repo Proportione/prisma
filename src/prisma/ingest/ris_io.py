@@ -11,30 +11,38 @@ from pathlib import Path
 
 Record = list[tuple[str, str]]
 
-_TAG_RE = re.compile(r"^([A-Z][A-Z0-9])  - (.*)$")
+_TAG_RE = re.compile(r"^([A-Z][A-Z0-9])  -(?: (.*))?$")
 
 
 def parse_ris(filepath: str | Path) -> list[Record]:
     """Parse a RIS file into a list of records.
 
     Each record is a list of (tag, value) tuples. New records are detected
-    by the `TY` tag; the closing `ER` tag is consumed but not retained.
+    by the `TY` tag; the closing `ER` tag ends the current record and is not
+    retained. Continuation lines without a tag prefix are appended to the
+    preceding field.
     """
     records: list[Record] = []
     current: Record = []
-    with open(filepath, encoding="utf-8") as f:
+    with open(filepath, encoding="utf-8-sig") as f:
         for raw_line in f:
             line = raw_line.rstrip("\n\r")
             m = _TAG_RE.match(line)
-            if not m:
-                continue
-            tag, value = m.group(1), m.group(2)
-            if tag == "TY" and current:
-                records.append(current)
-                current = []
-            if tag == "ER":
-                continue
-            current.append((tag, value))
+            if m:
+                tag, value = m.group(1), m.group(2) or ""
+                if tag == "ER":
+                    if current:
+                        records.append(current)
+                        current = []
+                    continue
+                if tag == "TY" and current:
+                    records.append(current)
+                    current = []
+                current.append((tag, value))
+            elif current and line.strip():
+                prev_tag, prev_val = current[-1]
+                sep = " " if prev_val else ""
+                current[-1] = (prev_tag, f"{prev_val}{sep}{line.strip()}")
     if current:
         records.append(current)
     return records
