@@ -4,6 +4,10 @@ All notable changes to `proportione-prisma` are documented here. Format follows 
 
 ## [Unreleased]
 
+### Added
+
+- `docs/notas-por-estudio.md` and `examples/obsidian/`: a recipe that turns `extracted.csv` and `mmat.csv` into one Markdown note per study with knap, plus an Obsidian Bases view filtered by MMAT level. No new dependency or command.
+
 ### Changed
 
 - `prisma extract` and `prisma quality`: the rows of the output CSV now follow the sorted order of the PDF paths; before, they followed the order the filesystem returned. PDFs whose name starts with a dot, or that sit inside a folder whose name starts with a dot, are no longer processed.
