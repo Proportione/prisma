@@ -89,7 +89,7 @@ prisma extract \
   --out data/extracted.csv
 ```
 
-La taxonomía es otro fichero de reglas: dice qué campos buscar en cada artículo. El resultado es una tabla CSV con una fila por PDF, que puedes abrir en Excel o en R.
+La taxonomía es otro fichero de reglas: dice qué campos buscar en cada artículo. El resultado es una tabla CSV con una fila por PDF, que puedes abrir en Excel o en R. Si prefieres una nota por estudio para leer y anotar en Obsidian, sigue [Una nota por estudio](notas-por-estudio.md) cuando tengas también la evaluación de calidad.
 
 ## 6. Evaluar la calidad
 
